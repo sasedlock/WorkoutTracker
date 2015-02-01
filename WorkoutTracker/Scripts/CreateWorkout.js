@@ -13,20 +13,6 @@
     return maxSets;
 }
 
-//function createExerciseInputHtml(id) {
-//    return function(elementId) {
-//        return '<div class="exercise-input-weight" id="exercise-input-weight-' + id + '.' + elementId + '"><input type="text"></div><div class="exercise-input-reps" id="exercise-input-reps-' + id + '.' + elementId + '"><input type="text"></div>';
-//    };
-//}
-
-//function exerciseHeaderHtml() {
-//    return '<span class="exercise-input-weight">Weight</span><span class="exercise-input-reps">Reps</span>';
-//}
-
-//function htmlToRemove(selector) {
-//    return [selector.children('.exercise-input-weight').last(), selector.children('.exercise-input-reps').last()];
-//}
-
 function updateSetValues(currentNumber, newNumber, selector, htmlToAdd, htmlToRemove) {
     var delta = newNumber - currentNumber;
 
@@ -39,11 +25,6 @@ function updateSetValues(currentNumber, newNumber, selector, htmlToAdd, htmlToRe
     } else {
         for (var i = currentNumber; i > newNumber; i--) {
             //selector.children("[class^='exercise-input']:nth-last-child(-n+2)").remove(); TODO: Update jQuery to 1.9 or greater to use this functionality
-            //selector.children('.exercise-input-weight').last().remove();
-            //selector.children('.exercise-input-reps').last().remove();
-            //$.each(htmlToRemove, function(i, v) {
-            //    v.remove();
-            //});
             $(htmlToRemove[i*2 - 1]).remove();
             $(htmlToRemove[i*2 - 2]).remove();
         }
@@ -51,28 +32,9 @@ function updateSetValues(currentNumber, newNumber, selector, htmlToAdd, htmlToRe
 }
 
 function updateSetInputs(currentNumber, newNumber, selector) {
-    //var htmlToAdd = '<div class="exercise-input-weight" id="exercise-input-weight-' + id + '.' + elementId + '"><input type="text"></div><div class="exercise-input-reps" id="exercise-input-reps-' + id + '.' + elementId + '"><input type="text"></div>';
-    //var htmlToRemove = [selector.children('.exercise-input-weight').last(), selector.children('.exercise-input-reps').last()];
     var htmlToAppend = $('.exercise-input-weight-set-template').html();
     var htmlToRemove = selector.children("[class^='exercise-input']");
     updateSetValues(currentNumber, newNumber, selector, htmlToAppend, htmlToRemove);
-
-    //var delta = newNumber - currentNumber;
-    
-    //if (delta == 0) {
-    //    // do nothing
-    //} else if (delta > 0) {
-    //    for (var i = 0; i < delta; i++) {
-    //        var elementId = i + 1;
-    //        selector.append('<div class="exercise-input-weight" id="exercise-input-weight-' + id + '.' + elementId + '"><input type="text"></div><div class="exercise-input-reps" id="exercise-input-reps-' + id + '.' + elementId + '"><input type="text"></div>');
-    //    }
-    //} else {
-    //    for (var i = 0; i < -delta; i++) {
-    //        //selector.children("[class^='exercise-input']:nth-last-child(-n+2)").remove(); TODO: Update jQuery to 1.9 or greater to use this functionality
-    //        selector.children('.exercise-input-weight').last().remove();
-    //        selector.children('.exercise-input-reps').last().remove();
-    //    }
-    //}
 }
 
 function updateSetHeaders(currentNumber, newNumber, selector) {
@@ -81,21 +43,6 @@ function updateSetHeaders(currentNumber, newNumber, selector) {
     var htmlToRemove = selector.children("[class^='exercise-input']");
     //updateSetValues(currentNumber, newNumber, selector, htmlToAppend, htmlToRemove(selector));
     updateSetValues(currentNumber, newNumber, selector, htmlToAppend, htmlToRemove);
-
-    //var delta = newNumber - currentNumber;
-
-    //if (delta == 0) {
-    //    // do nothing
-    //} else if (delta > 0) {
-    //    for (var i = 0; i < delta; i++) {
-    //        selector.append('<span class="exercise-input-weight">Weight</span><span class="exercise-input-reps">Reps</span>');
-    //    }
-    //} else {
-    //    for (var i = 0; i < -delta; i++) {
-    //        selector.children('.exercise-input-weight').last().remove();
-    //        selector.children('.exercise-input-reps').last().remove();
-    //    }
-    //}
 }
 
 function addAppropriateNumberOfSetInputs(numberOfSets, exerciseSetInput) {
@@ -112,10 +59,7 @@ function addAppropriateNumberOfSetInputs(numberOfSets, exerciseSetInput) {
 }
 
 function addExerciseSetInputs(exerciseSetInput) {
-    //var selector = '#exercise-input-set';
-    //var numberOfSets = $(selector).children('input').val() == '' ? 0 : $(selector).children('input').val();
     var numberOfSets = exerciseSetInput.value;
-    //var numberOfSets = exerciseSetInput.children('input').val() == '' ? 0 : $(selector).children('input').val();
     if (numberOfSets === '') {
         numberOfSets = 0;
     }
@@ -136,25 +80,10 @@ function addAppropriateNumberOfExerciseInputs(newNum) { // TODO: Incorporate int
     } else if (delta > 0) {
         for (var i = 0; i < delta; i++) {
             exercisesToAdd.append(htmlToAppend);
-
-            //exercisesToAdd.append('<div class="exercise-input"' +
-            //    '"><div class="exercise-input-name"' +
-            //    '"><input type="text"></div><div class="exercise-input-sets"' +
-            //    '"><input type="text" onblur="addExerciseSetInputs(this)"></div></div></div>');
-
-            //exercisesToAdd.append('<div class="exercise-input" id="exercise-input-' + elementId +
-            //    '"><div class="exercise-input-name" id="exercise-input-name-' + elementId +
-            //    '"><input type="text"></div><div class="exercise-input-sets" id="exercise-input-set-' + elementId +
-            //    '"><input type="text" onblur="addExerciseSetInputs(this)"></div></div></div>');
         }
     } else {
         for (var i = currentNum; i > newNum; i--) {
-            //exerciseInputs.eq(i - 1).remove();
-            //exerciseInputs.get(i - 1).remove();
             $(exerciseInputs[i - 1]).remove();
-            //exerciseInputs.last().remove();
-            //exerciseInputs.pop().remove();
-            //exercisesToAdd.children('.exercise-input').last().remove();
         }
     }
 }
