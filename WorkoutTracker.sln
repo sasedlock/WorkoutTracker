@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkoutTracker", "WorkoutTracker\WorkoutTracker.csproj", "{F7C2BC0A-E36B-442A-82BE-E2BCAF528502}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkoutTracker.Tests", "WorkoutTracker.Tests\WorkoutTracker.Tests.csproj", "{D66B7110-F3BE-40F2-838D-6B77B7860F1C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F7C2BC0A-E36B-442A-82BE-E2BCAF528502}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7C2BC0A-E36B-442A-82BE-E2BCAF528502}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7C2BC0A-E36B-442A-82BE-E2BCAF528502}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7C2BC0A-E36B-442A-82BE-E2BCAF528502}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D66B7110-F3BE-40F2-838D-6B77B7860F1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D66B7110-F3BE-40F2-838D-6B77B7860F1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D66B7110-F3BE-40F2-838D-6B77B7860F1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D66B7110-F3BE-40F2-838D-6B77B7860F1C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

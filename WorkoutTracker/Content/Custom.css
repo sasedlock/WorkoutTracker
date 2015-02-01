@@ -1,0 +1,59 @@
+﻿.add-exercise-button {
+    display: inline;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.select-number-of-exercises {
+    display: inline;
+}
+
+.exercise-label {
+    float: left;
+    margin-right: 3px;
+}
+
+.exercise-header {
+    display: block;    
+}
+
+.exercises-to-add {
+    display: table;
+}
+
+.exercise-header {
+    display: table-row;
+}
+
+.exercise-header span {
+    display: table-cell;
+}
+
+div.exercise-input {
+    display: table-row;
+}
+
+.exercise-input-name, .exercise-input-sets, .exercise-input-weight, .exercise-input-reps {
+    display: table-cell;
+}
+
+.exercise-input-sets input, .exercise-input-reps input {
+    width: 20px;
+}
+
+.exercise-input-weight input {
+    width: 30px;
+}
+
+.templates {
+    visibility: hidden;
+}
+
+/*.exercise-input-reps input {
+    width: 20px;
+}*/
+

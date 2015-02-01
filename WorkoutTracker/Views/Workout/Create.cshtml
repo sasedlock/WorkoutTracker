@@ -1,0 +1,93 @@
+﻿@model WorkoutTracker.Models.Workout
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Workout</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Date)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Date)
+            @Html.ValidationMessageFor(model => model.Date)
+        </div>
+        
+        <div class="editor-label exercise-label">
+            @Html.LabelFor(model => model.Exercises)
+        </div>
+        <div class="add-exercise-button">+</div>
+        <div class="add-exercises hidden">
+            <div class="number-of-exercises">
+                <p class="select-number-of-exercises">How many exercises did you complete?</p>
+                <select id="selectNumberOfExercises" onchange="addExerciseInputs()">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <div class="exercises-to-add">
+                <!-- 
+                    I will need:
+                    - Top bar for the name of the exercise
+                    - Another drop down, similar to the number of exercises, that denotes
+                    how many sets were completed
+                    - For each of the sets defined above, a small text box input
+                    to denote how many reps were completed
+                        
+                    -->
+                <div class="exercise-header">
+                    <span>Exercise</span>
+                    <span>Sets</span>
+                </div>
+            </div>
+        </div>
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+    <div class="templates">
+        <div class="exercise-input-template">
+            <div class="exercise-input">
+                <div class="exercise-input-name">
+                    <input type="text"/>
+                </div>
+                <div class="exercise-input-sets">
+                    <input type="text" onblur="addExerciseSetInputs(this)"/>
+                </div>
+            </div>
+        </div>
+        <div class="exercise-header-template">
+            <span class="exercise-input-weight">Weight</span>
+            <span class="exercise-input-reps">Reps</span>
+        </div>
+        <div class="exercise-input-weight-set-template">
+            <div class="exercise-input-weight">
+                <input type="text"/>
+            </div>
+            <div class="exercise-input-reps">
+                <input type="text"/>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/createworkout")
+}
