@@ -3,7 +3,10 @@
     var maxSets = 0;
 
     $.each(allExerciseSetInputs,function () {
-        var setsForExercise = $(this).children().first().val() == '' ? 0 : $(this).children().first().val();
+        var setsForExercise = $(this).children().first().val();
+        if (setsForExercise === '') {
+            setsForExercise = 0;
+        }
         
         if (setsForExercise > maxSets) {
             maxSets = setsForExercise;
@@ -33,15 +36,13 @@ function updateSetValues(currentNumber, newNumber, selector, htmlToAdd, htmlToRe
 
 function updateSetInputs(currentNumber, newNumber, selector) {
     var htmlToAppend = $('.exercise-input-weight-set-template').html();
-    var htmlToRemove = selector.children("[class^='exercise-input']");
+    var htmlToRemove = selector.children('.exercise-input-weight, .exercise-input-reps');
     updateSetValues(currentNumber, newNumber, selector, htmlToAppend, htmlToRemove);
 }
 
 function updateSetHeaders(currentNumber, newNumber, selector) {
     var htmlToAppend = $('.exercise-header-template').html();
-    // Want to return an element that returns an array of Weight text, and and array of Set text
     var htmlToRemove = selector.children("[class^='exercise-input']");
-    //updateSetValues(currentNumber, newNumber, selector, htmlToAppend, htmlToRemove(selector));
     updateSetValues(currentNumber, newNumber, selector, htmlToAppend, htmlToRemove);
 }
 
