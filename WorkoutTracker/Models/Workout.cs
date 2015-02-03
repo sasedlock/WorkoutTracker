@@ -23,6 +23,7 @@ namespace WorkoutTracker.Models
     public class Set
     {
         public int Id { get; set; }
+        public String Weight { get; set; }
         public int Repetitions { get; set; }
     }
 
