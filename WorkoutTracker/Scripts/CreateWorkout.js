@@ -98,6 +98,12 @@ function hookUpEvents() {
     $('.add-exercise-button').click(function () {
         $('.add-exercises').removeClass('hidden');
     });
+    
+    /*
+    // Hook up click event to create workout button to an event that will
+    - Collect data all data related to a workout
+    - Pass a Workout model back to the proper URL via an AJAX call
+    */
 }
 
 function main() {
