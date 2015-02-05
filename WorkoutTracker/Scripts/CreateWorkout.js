@@ -1,3 +1,4 @@
+// Testing the pulling of changes made in GitHub, down to my local repo
 ﻿function getMaxSetsForAllExercises() {
     var allExerciseSetInputs = $('.exercise-input').children('.exercise-input-sets');
     var maxSets = 0;
