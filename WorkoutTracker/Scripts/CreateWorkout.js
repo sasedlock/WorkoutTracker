@@ -1,4 +1,4 @@
-// Testing the pulling of changes made in GitHub, down to my local repo
+﻿// Testing the pulling of changes made in GitHub, down to my local repo
 ﻿function getMaxSetsForAllExercises() {
     var allExerciseSetInputs = $('.exercise-input').children('.exercise-input-sets');
     var maxSets = 0;
@@ -95,6 +95,30 @@ function addExerciseInputs() {
     addAppropriateNumberOfExerciseInputs(numberOfExercises);
 }
 
+function getExerciseInputs() {
+    $('.exercises-to-add').children('.exercise-input').each(function (exerciseIndex) {
+        var exerciseInput = $(this);
+        var exerciseName = exerciseInput.find("[class*='name']>input").val();
+        var sets = new Array();
+
+        exerciseInput.children('.exercise-input-weight').each(function (setIndex) {
+            var weight = $(this).find('input').val();
+            var reps = $(this).next().find('input').val();
+            sets.push({ Id: setIndex + 1, Weight: weight, Repetitions: reps });
+        });
+
+        exercises.push({ Id: exerciseIndex + 1, Name: exerciseName, Sets: sets });
+    });
+
+    return exercises;
+}
+
+function fillWorkout() {
+    workout.Id = 1;
+    workout.Date = $('#Date').val();
+    workout.Exercises = getExerciseInputs();
+}
+
 function hookUpEvents() {
     $('.add-exercise-button').click(function () {
         $('.add-exercises').removeClass('hidden');
@@ -105,10 +129,17 @@ function hookUpEvents() {
     - Collect data all data related to a workout
     - Pass a Workout model back to the proper URL via an AJAX call
     */
+    $('#CreateWorkout').click(function() {
+        fillWorkout();
+    });
 }
 
 function main() {
     hookUpEvents();
 }
+
+var workout = new Object();
+var exercises = new Array();
+
 
 $(document).ready(main);
