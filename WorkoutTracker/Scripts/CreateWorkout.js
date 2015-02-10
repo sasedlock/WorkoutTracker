@@ -1,5 +1,4 @@
-﻿// Testing the pulling of changes made in GitHub, down to my local repo
-﻿function getMaxSetsForAllExercises() {
+﻿﻿function getMaxSetsForAllExercises() {
     var allExerciseSetInputs = $('.exercise-input').children('.exercise-input-sets');
     var maxSets = 0;
 
@@ -104,17 +103,19 @@ function getExerciseInputs() {
         exerciseInput.children('.exercise-input-weight').each(function (setIndex) {
             var weight = $(this).find('input').val();
             var reps = $(this).next().find('input').val();
-            sets.push({ Id: setIndex + 1, Weight: weight, Repetitions: reps });
+            //sets.push({ Id: setIndex + 1, Weight: weight, Repetitions: reps });
+            sets.push({ Weight: weight, Repetitions: reps });
         });
 
-        exercises.push({ Id: exerciseIndex + 1, Name: exerciseName, Sets: sets });
+        //exercises.push({ Id: exerciseIndex + 1, Name: exerciseName, Sets: sets });
+        exercises.push({ Name: exerciseName, Sets: sets });
     });
 
     return exercises;
 }
 
 function fillWorkout() {
-    workout.Id = 1;
+    //workout.Id = 1;
     workout.Date = $('#Date').val();
     workout.Exercises = getExerciseInputs();
 }
@@ -131,6 +132,24 @@ function hookUpEvents() {
     */
     $('#CreateWorkout').click(function() {
         fillWorkout();
+        var url = "/Workout/Create";
+        console.log(workout);
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: JSON.stringify({ workout: workout }),
+            contentType: 'application/json',
+            success: function() {
+                alert('success!');
+            },
+            error: function(jqXHR, testStatus, errorThrown) {
+                console.log("jqXHR: " + jqXHR);
+                console.log("testStatus: " + testStatus);
+                console.log("errorThrown: " + errorThrown);
+            },
+            dataType: "json"
+        });
     });
 }
 
