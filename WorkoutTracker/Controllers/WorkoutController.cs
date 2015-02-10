@@ -46,7 +46,7 @@ namespace WorkoutTracker.Controllers
         // POST: /Default1/Create
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult Create(Workout workout)
         {
             if (ModelState.IsValid)
