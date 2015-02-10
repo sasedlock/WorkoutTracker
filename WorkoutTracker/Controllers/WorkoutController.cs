@@ -18,7 +18,11 @@ namespace WorkoutTracker.Controllers
 
         public ActionResult Index()
         {
-            return View(db.Workouts.ToList());
+            var workouts = db.Workouts
+                .Include("Exercises")
+                .Include("Exercises.Sets").ToList();
+
+            return View(workouts);
         }
 
         //
